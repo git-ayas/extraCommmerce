@@ -44,6 +44,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "node_modules/.bin/netlify dev",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -67,7 +68,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.1.2"
+    "@capacitor/cli": "3.1.2",
+    "netlify-cli": "^5.4.1"
   },
-  "description": "An Ionic project"
+  "description": "A mobile first serverless ecommerce ready to deploy on netlify."
 }
