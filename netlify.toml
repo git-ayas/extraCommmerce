@@ -1,0 +1,10 @@
+[functions]
+    # Directory with serverless functions, including background functions,
+    # to deploy. This is relative to the base directory if one has been set, 
+    # or the root directory if a base hasn’t been set.
+    directory = "lambdas/"
+[template.environment]
+    MONGO_URI = "YOUR_CLUSTER_URL"
+    MONGO_DB_NAME = "YOUR_DB_NAME"
+    MONGO_USER = "YOUR_DB_USER"
+    MONGO_PASS = "YOUR_DB_PASSWORD"
