@@ -22,12 +22,12 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { AppContextProvider } from './stores/AppContext';
 import Manage from './pages/Manage';
+import { StoreProvider } from './stores/StoreContext';
 
 const App: React.FC = () => {
   return (
-    <AppContextProvider>
+    <StoreProvider>
       <IonApp>
         <IonReactRouter>
           <IonSplitPane contentId="main">
@@ -46,7 +46,7 @@ const App: React.FC = () => {
           </IonSplitPane>
         </IonReactRouter>
       </IonApp>
-    </AppContextProvider>
+    </StoreProvider>
   );
 };
 

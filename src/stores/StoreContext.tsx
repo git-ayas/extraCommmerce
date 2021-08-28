@@ -1,19 +1,21 @@
 import React, { createContext, useReducer } from "react";
-
+import storeModel from "../models/storeModel";
 
 interface StateType {
-
+    fetchedProducts: any
 }
-let initialState = {}
+let initialState: StateType = { fetchedProducts: {} }
 interface ActionType { type: string, payload: any }
-const StoreContext = createContext({} as StateType)
-const reducer = (state: StateType, action: ActionType) => {
+let dummy: any = {}
+let StoreContext = createContext(dummy)
+const StoreDataController = new storeModel();
+const mutator = (state: StateType, action: ActionType) => {
 
     switch (action.type) {
-        case "":
-            
+        case "updateFetchedProducts":
+            state.fetchedProducts = action.payload
             break;
-    
+
         default:
             break;
     }
@@ -21,14 +23,28 @@ const reducer = (state: StateType, action: ActionType) => {
 
 }
 
-const StoreProvider:React.FC = (props) =>{
-    const [state, dispatch] = useReducer(reducer, initialState)
+function StoreProvider(props: any) {
+    const [state, dispatch] = useReducer(mutator, initialState)
 
-    return(
-        <StoreContext.Provider value ={{state,dispatch}}>{props.children}</StoreContext.Provider>
+    const action = (name: any, payload: any) => {
+        switch (name) {
+            case "GET":
+                StoreDataController.getProducts().then((res) => {
+                    dispatch({ type: "updateFetchedProducts", payload: res.data })
+                })
+
+                break;
+
+            default:
+                break;
+        }
+    }
+    const value = { state, action }
+    return (
+        <StoreContext.Provider value={value}>{props.children}</StoreContext.Provider>
     )
 }
 
 const StoreConsumer = StoreContext.Consumer
-export {StoreContext,StoreProvider,StoreConsumer }
+export { StoreContext, StoreProvider, StoreConsumer }
 
