@@ -1,7 +1,6 @@
 import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { useContext } from 'react';
 import { useParams } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
 import { AppContext } from '../stores/AppContext';
 import './Page.css';
 
@@ -46,9 +45,7 @@ const Page: React.FC = () => {
           <IonCol>
             <h2>You have {state.count} in your cart</h2>
           </IonCol>
-          
         </IonRow>
-        <ExploreContainer name={name} />
       </IonContent>
     </IonPage>
   );
