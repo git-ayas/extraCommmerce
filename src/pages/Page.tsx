@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { StoreContext } from '../stores/StoreContext';
@@ -16,16 +16,24 @@ const Page: React.FC = () => {
       //cleanup
 
     }
-  },[storeState.fetchedProducts.length])
+  }, [storeState.fetchedProducts.length])
 
   const productListings = fetchedProducts && fetchedProducts.length > 0
     ? fetchedProducts.map((product: any, index: any) => {
       return (
-        <IonRow key={`product_row_${index}_${Date.now() * Math.floor(Math.random() * 1024)}`}>
-          <IonCol>{product.name}</IonCol>
-          <IonCol>{product.price}</IonCol>
-          <IonCol>{product.description}</IonCol>
-        </IonRow>
+        <IonItem key={`product_row_${index}_${Date.now() * Math.floor(Math.random() * 1024)}`}
+        lines={'none'}
+        style={{border:"1px solid grey", borderRadius:"6px", margin:"0.5em 0"}}
+        >
+          <IonAvatar slot="start">
+            <img alt={`${product.name}`} src="https://via.placeholder.com/300/0000FF/FFFFFF/?text=Product+Image" />
+          </IonAvatar>
+          <IonLabel>
+            <h2>{product.name}</h2>
+            <h3>{product.price}</h3>
+            <p>{product.description}</p>
+          </IonLabel>
+        </IonItem>
       )
     })
     : null
@@ -56,7 +64,11 @@ const Page: React.FC = () => {
             </IonButton>
           </IonCol>
         </IonRow>
-        {productListings}
+        <IonRow>
+          <IonList style={{width:"22em", margin:"0 auto"}}>
+            {productListings}
+          </IonList>
+        </IonRow>
       </IonContent>
     </IonPage>
   );
