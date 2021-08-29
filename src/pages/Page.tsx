@@ -1,4 +1,4 @@
-import { IonAvatar, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRow, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { StoreContext } from '../stores/StoreContext';
@@ -25,12 +25,11 @@ const Page: React.FC = () => {
         lines={'none'}
         style={{border:"1px solid grey", borderRadius:"6px", margin:"0.5em 0"}}
         >
-          <IonAvatar slot="start">
-            <img alt={`${product.name}`} src="https://via.placeholder.com/300/0000FF/FFFFFF/?text=Product+Image" />
-          </IonAvatar>
+            <img slot="start" alt={`${product.name}`} style={{width:"120px",height:"120px"}} src="https://via.placeholder.com/300/0000FF/FFFFFF/?text=Product+Image" />
+          
           <IonLabel>
             <h2>{product.name}</h2>
-            <h3>{product.price}</h3>
+            <h3>₹{product.price}</h3>
             <p>{product.description}</p>
           </IonLabel>
         </IonItem>
