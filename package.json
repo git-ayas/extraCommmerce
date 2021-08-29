@@ -46,6 +46,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev": "node_modules/.bin/netlify dev -p 555",
+    "netlify:login": "node_modules/.bin/netlify login",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
