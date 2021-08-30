@@ -36,11 +36,11 @@ const App: React.FC = () => {
               <Route path="/" exact={true}>
                 <Redirect to="/Products/Home" />
               </Route>
+              <Route path="/Admin/Manage/Products" exact={true}>
+                <Manage />
+              </Route>
               <Route path="/Products/:name" exact={true}>
                 <Page />
-              </Route>
-              <Route path="/Manage" exact={true}>
-                <Manage />
               </Route>
             </IonRouterOutlet>
           </IonSplitPane>

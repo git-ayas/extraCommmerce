@@ -10,7 +10,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { homeOutline,homeSharp } from 'ionicons/icons';
+import { homeOutline,homeSharp,cogOutline,cogSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -26,6 +26,12 @@ const appPages: AppPage[] = [
     url: '/Products/Home',
     iosIcon: homeOutline,
     mdIcon: homeSharp
+  },
+  {
+    title: 'Manage Products',
+    url: '/Admin/Manage/Products',
+    iosIcon: cogOutline,
+    mdIcon: cogSharp
   },
 
 ];

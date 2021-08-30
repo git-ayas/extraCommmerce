@@ -16,4 +16,7 @@ export default class storeModel {
         return this.connection.get("Product")
 
     }
+    addProduct(productDetails: any) {
+        return this.connection.post("Product", productDetails)
+    }
 }
