@@ -22,11 +22,11 @@ const Page: React.FC = () => {
     ? fetchedProducts.map((product: any, index: any) => {
       return (
         <IonItem key={`product_row_${index}_${Date.now() * Math.floor(Math.random() * 1024)}`}
-        lines={'none'}
-        style={{border:"1px solid grey", borderRadius:"6px", margin:"0.5em 0"}}
+          lines={'none'}
+          style={{ border: "1px solid grey", borderRadius: "6px", margin: "0.5em 0" }}
         >
-            <img slot="start" alt={`${product.name}`} style={{width:"120px",height:"120px"}} src="https://via.placeholder.com/300/0000FF/FFFFFF/?text=Product+Image" />
-          
+          <img slot="start" alt={`${product.name}`} style={{ width: "120px", height: "120px" }} src="https://via.placeholder.com/300/0000FF/FFFFFF/?text=Product+Image" />
+
           <IonLabel>
             <h2>{product.name}</h2>
             <h3>₹{product.price}</h3>
@@ -64,9 +64,11 @@ const Page: React.FC = () => {
           </IonCol>
         </IonRow>
         <IonRow>
-          <IonList style={{width:"22em", margin:"0 auto"}}>
-            {productListings}
-          </IonList>
+          <IonCol>
+            <IonList>
+              {productListings}
+            </IonList>
+          </IonCol>
         </IonRow>
       </IonContent>
     </IonPage>
