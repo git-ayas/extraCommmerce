@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import storeModel from "../models/storeModel";
+import storeModel, { ProductData } from "../models/storeModel";
 
 interface StateType {
     status: "idle" | "fetching",
@@ -31,7 +31,7 @@ const mutator = (state: StateType, action: ActionType) => {
 function StoreProvider(props: any) {
     const [state, dispatch] = useReducer(mutator, initialState)
 
-    const action = (name: any, payload: any = null) => {
+    const action = (name: any, payload: null | ProductData = null) => {
         switch (name) {
             case "GET":
                 dispatch({

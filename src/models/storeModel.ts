@@ -1,5 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from "axios";
 
+
+export interface ProductData {
+    name: string;
+    price: number;
+    description: string;
+}
 export default class storeModel {
     connection: AxiosInstance;
     constructor() {
@@ -16,7 +22,7 @@ export default class storeModel {
         return this.connection.get("Product")
 
     }
-    addProduct(productDetails: any) {
+    addProduct(productDetails: ProductData) {
         return this.connection.post("Product", productDetails)
     }
 }
