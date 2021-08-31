@@ -3,9 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ProductData } from '../models/storeModel';
 import { StoreContext } from '../stores/StoreContext';
-import './Page.css';
 
-const Page: React.FC = () => {
+const Products: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
   const { state: storeState, action: storeAction } = useContext(StoreContext);
@@ -18,10 +17,11 @@ const Page: React.FC = () => {
     console.log("Mounted")
     storeAction('GET')
     return () => {
+      console.log("unMounted")
       //cleanup
 
     }
-  }, [storeState.fetchedProducts.length])
+  }, [storeState.fetchedProducts.length,CurrentlyViewingProduct])
 
   const productListings = fetchedProducts && fetchedProducts.length > 0
     ? fetchedProducts.map((product: any, index: any) => {
@@ -92,4 +92,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default Products;
