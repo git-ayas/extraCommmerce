@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, PropsWithChildren, useReducer } from "react";
 import storeModel, { ProductData } from "../models/storeModel";
 
 interface StateType {
@@ -28,7 +28,7 @@ const mutator = (state: StateType, action: ActionType) => {
 
 }
 
-function StoreProvider(props: any) {
+function StoreProvider(props: PropsWithChildren<any>) {
     const [state, dispatch] = useReducer(mutator, initialState)
 
     const action = (name: any, payload: null | ProductData = null) => {
