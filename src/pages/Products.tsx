@@ -77,10 +77,13 @@ const Products: React.FC = () => {
         <IonRow>
           <IonCol>
             <ProductInfoModal
-              show={showModal} 
-              showDeleteButton = {true} onDeleteButtonClick={()=>{}}
-              onCloseButtonClick={()=>setShowModal(false)} 
-              ProductInfo={CurrentlyViewingProduct}        
+              show={showModal}
+              showDeleteButton={true} onDeleteButtonClick={() => {
+                storeAction('deleteProduct', CurrentlyViewingProduct);
+                setShowModal(false);
+              }}
+              onCloseButtonClick={() => setShowModal(false)}
+              ProductInfo={CurrentlyViewingProduct}
             ></ProductInfoModal>
 
           </IonCol>

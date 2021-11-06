@@ -21,4 +21,9 @@ export default class storeModel {
     addProduct(productDetails: ProductData) {
         return this.connection.post("Product", productDetails)
     }
+    deleteProduct(productDetails: ProductData) {
+        return this.connection.delete("Product", {
+            params: productDetails
+        })
+    }
 }

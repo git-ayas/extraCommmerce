@@ -5,9 +5,9 @@ interface StateType {
     status: "idle" | "fetching",
     fetchedProducts: any,
 }
-let initialState: StateType = { status: "idle", fetchedProducts: { } }
+let initialState: StateType = { status: "idle", fetchedProducts: {} }
 interface ActionType { type: string, payload: any }
-let dummy: any = { }
+let dummy: any = {}
 let StoreContext = createContext(dummy)
 const StoreDataController = new storeModel();
 const mutator = (state: StateType, action: ActionType) => {
@@ -52,6 +52,12 @@ function StoreProvider(props: PropsWithChildren<any>) {
                     throw new Error("Empty product data");
                 }
                 StoreDataController.addProduct(payload)
+                break
+            case "deleteProduct":
+                if (payload === null || payload === undefined) {
+                    throw new Error("Empty product data");
+                }
+                StoreDataController.deleteProduct(payload).then(()=>action("GET"))
                 break
 
             default:
