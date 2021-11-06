@@ -5,7 +5,7 @@ interface ProductInfoModalPropType {
     show: boolean,
     showDeleteButton?: boolean,
     onCloseButtonClick: React.MouseEventHandler<HTMLIonButtonElement> | undefined,
-    onDeleteButtonClick?: React.MouseEventHandler<HTMLIonButtonElement> | undefined,
+    onDeleteButtonClick?: React.MouseEventHandler<HTMLIonButtonElement>,
     ProductInfo: ProductData
 }
 
