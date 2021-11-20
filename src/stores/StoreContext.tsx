@@ -1,3 +1,4 @@
+import { useIonAlert } from "@ionic/react";
 import React, { createContext, PropsWithChildren, useReducer } from "react";
 import storeModel, { ProductData } from "../models/storeModel";
 
@@ -30,6 +31,42 @@ const mutator = (state: StateType, action: ActionType) => {
 
 function StoreProvider(props: PropsWithChildren<any>) {
     const [state, dispatch] = useReducer(mutator, initialState)
+    const [present] = useIonAlert()
+    const success = (header: string, message: string) => {
+        present({
+            cssClass: "success-message-alert",
+            header,
+            message,
+            buttons: [
+                "Dismiss"
+            ],
+            onDidDismiss: (e) => console.log('did dismiss'),
+        })
+    }
+    const info = (header: string, message: string) => {
+        present({
+            cssClass: "info-message-alert",
+            header,
+            message,
+            buttons: [
+                "Dismiss"
+            ],
+            onDidDismiss: (e) => console.log('did dismiss'),
+        })
+    }
+    const fail = (header: string, message: string) => {
+
+        present({
+            cssClass: "fail-message-alert",
+            header,
+            message,
+            buttons: [
+                "Dismiss"
+            ],
+            onDidDismiss: (e) => console.log('did dismiss'),
+        })
+    }
+
 
     const action = (name: any, payload: null | ProductData = null) => {
         switch (name) {
@@ -52,6 +89,8 @@ function StoreProvider(props: PropsWithChildren<any>) {
                     throw new Error("Empty product data");
                 }
                 StoreDataController.addProduct(payload)
+                    .then(() => success("Added", "New product added."))
+                    .catch((error) => { fail("Failed to add product", error.message) })
                 break
             case "deleteProduct":
                 if (payload === null || payload === undefined) {

@@ -25,6 +25,8 @@ import './theme/variables.css';
 import Manage from './pages/Manage';
 import { StoreProvider } from './stores/StoreContext';
 
+// App css
+import "./App.scss";
 const App: React.FC = () => {
   return (
     <StoreProvider>
