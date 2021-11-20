@@ -1,0 +1,48 @@
+.info-message-alert {
+    .alert-title::before {
+        display: inline-block;
+        content: "i";
+        padding: 0.7rem;
+        background: var(--ion-color-primary);
+        margin: 0.3rem;
+        border-radius: 1rem;
+        line-height: 0.2;
+        font-weight: 500;
+    }
+
+    .alert-button {
+        color: var(--ion-color-primary)
+    }
+}
+
+.success-message-alert {
+    .alert-title::before {
+        display: inline-block;
+        content: "✓";
+        padding: 0.5rem;
+        background: var(--ion-color-success);
+        margin: 0.3rem;
+        border-radius: 1rem;
+        line-height: 0.7;
+    }
+
+    .alert-button {
+        color: var(--ion-color-success)
+    }
+}
+
+.fail-message-alert {
+    .alert-title::before {
+        display: inline-block;
+        content: "X";
+        padding: 0.5rem;
+        background: var(--ion-color-danger);
+        margin: 0.3rem;
+        border-radius: 1rem;
+        line-height: 0.7;
+    }
+
+    .alert-button {
+        color: var(--ion-color-danger)
+    }
+}
