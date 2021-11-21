@@ -1,5 +1,5 @@
 import { useIonAlert } from "@ionic/react";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, PropsWithChildren, useReducer } from "react";
 import storeModel, { ProductData } from "../models/storeModel";
 
 interface StateType {
@@ -29,7 +29,7 @@ const mutator = (state: StateType, action: ActionType) => {
 
 }
 
-function StoreProvider(props: any) {
+function StoreProvider(props: PropsWithChildren<any>) {
     const [state, dispatch] = useReducer(mutator, initialState)
     const [present] = useIonAlert()
     const success = (header: string, message: string) => {
@@ -91,6 +91,12 @@ function StoreProvider(props: any) {
                 StoreDataController.addProduct(payload)
                     .then(() => success("Added", "New product added."))
                     .catch((error) => { fail("Failed to add product", error.message) })
+                break
+            case "deleteProduct":
+                if (payload === null || payload === undefined) {
+                    throw new Error("Empty product data");
+                }
+                StoreDataController.deleteProduct(payload).then(()=>action("GET"))
                 break
 
             default:

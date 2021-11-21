@@ -20,7 +20,7 @@ import { StoreContext } from "../stores/StoreContext";
 
 const Manage: React.FC = () => {
 
-    const { state: storeState, action: storeAction } = useContext(StoreContext);
+    const { action: storeAction } = useContext(StoreContext);
 
     const [Name, setName] = useState("")
     const [Price, setPrice] = useState(0)

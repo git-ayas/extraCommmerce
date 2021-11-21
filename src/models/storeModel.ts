@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosInstance } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 
 export interface ProductData {
@@ -14,15 +14,16 @@ export default class storeModel {
             baseURL: `${origin}/.netlify/functions/`,
             timeout: 10000,
         });
-
-
     }
     getProducts() {
-
         return this.connection.get("Product")
-
     }
     addProduct(productDetails: ProductData) {
         return this.connection.post("Product", productDetails)
+    }
+    deleteProduct(productDetails: ProductData) {
+        return this.connection.delete("Product", {
+            params: productDetails
+        })
     }
 }
