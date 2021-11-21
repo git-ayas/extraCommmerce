@@ -24,7 +24,7 @@ export const ProductInfoModal: React.FC<ProductInfoModalPropType> = (props: Prod
                 "Cancel",
                 {
                     text: "Delete", 
-                    handler: (event) => {
+                    handler: () => {
                         if (onDeleteButtonClick)
                             onDeleteButtonClick(event)
 
