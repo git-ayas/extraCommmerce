@@ -1,4 +1,4 @@
-import { IonModal, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from "@ionic/react"
+import { IonModal, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, useIonAlert } from "@ionic/react"
 import { ProductData } from "../models/storeModel"
 
 interface ProductInfoModalPropType {
@@ -13,6 +13,28 @@ export const ProductInfoModal: React.FC<ProductInfoModalPropType> = (props: Prod
 
     const { show, showDeleteButton, ProductInfo, onCloseButtonClick, onDeleteButtonClick } = props
     const { name, price, description } = ProductInfo
+    const [present] = useIonAlert()
+
+    const showDeleteConfirmation = (event: any) => {
+        present({
+            cssClass: "warn-message-alert",
+            header: "Confirm delete",
+            message: `Do you want to delete ${name}?`,
+            buttons: [
+                "Cancel",
+                {
+                    text: "Delete", 
+                    handler: (event) => {
+                        if (onDeleteButtonClick)
+                            onDeleteButtonClick(event)
+
+                    },
+                    cssClass:"danger-alert-button"
+                }
+            ],
+            onDidDismiss: (e) => console.log('did dismiss'),
+        })
+    }
 
     return (
         <IonModal isOpen={show}>
@@ -28,7 +50,7 @@ export const ProductInfoModal: React.FC<ProductInfoModalPropType> = (props: Prod
             </IonCard>
             <IonButton onClick={onCloseButtonClick}>Close</IonButton>
             {showDeleteButton ? (
-                <IonButton color={"danger"} onClick={onDeleteButtonClick}>
+                <IonButton color={"danger"} onClick={showDeleteConfirmation}>
                     Delete
                 </IonButton>
             )
